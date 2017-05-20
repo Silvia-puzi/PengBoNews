@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+        <com.example.administrator.pengbonews.utils.CircleImageView
+            android:id="@+id/item_video_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/item_video_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="网易"
+            android:layout_toRightOf="@+id/item_video_img"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/item_video_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/item_video_img"
+            android:layout_below="@+id/item_video_name"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:textSize="14sp"
+            android:text="http://cms-bucket.nosdn.127.net/e08af0c66acb48feb730bf8039ee6a1320161216010434.jpg"/>
+
+        <TextView
+            android:id="@+id/item_video_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:text="2小时前"
+            android:textSize="12sp"
+            android:layout_toRightOf="@+id/item_video_img"
+            android:layout_below="@+id/item_video_comment"/>
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:padding="10dp">
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/normal_img"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:src="@drawable/splash01"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/normal_title"
+            android:lines="2"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="云南越狱犯被抓捕细节公布:负隅顽抗 腿部被击伤"
+            android:layout_toRightOf="@+id/normal_img"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/normal_source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新华社"
+            android:textSize="12sp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/normal_img"
+            android:layout_below="@+id/normal_title"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentBottom="true"/>
+
+        <TextView
+            android:id="@+id/normal_reply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2000跟帖"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">PengBoNews</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_search">Search</string>
+    <string name="loading">loading</string>
+
+    <!--more-->
+    <string name="text"></string>
+    <string name="title"></string>
+    <string name="context_menu">Context menu</string>
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="presenter"
+            type="com.example.administrator.pengbonews.view.activity.MainActivity.Presenter"/>
+    </data>
+
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:id="@+id/content_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.example.administrator.pengbonews.view.activity.MainActivity"
+        tools:showIn="@layout/app_bar_main">
+
+        <RadioGroup
+            android:id="@+id/radiogroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="15dp"
+            android:layout_alignParentBottom="true"
+            >
+
+            <RadioButton
+                android:onClick="@{presenter.onClick}"
+                android:id="@+id/main_mainpage"
+                android:checked="true"
+                style="@style/MainButton"
+
+                android:drawableTop="@drawable/selector_news"
+                />
+
+            <RadioButton
+                android:onClick="@{presenter.onClick}"
+                android:id="@+id/main_wechat"
+                android:checked="false"
+                style="@style/MainButton"
+                android:drawableTop="@drawable/selector_today"
+                />
+
+            <RadioButton
+                android:onClick="@{presenter.onClick}"
+                android:id="@+id/main_video"
+                android:checked="false"
+                android:drawableTop="@drawable/selector_video"
+                style="@style/MainButton"
+                />
+        </RadioGroup>
+
+        <FrameLayout
+            android:id="@+id/main_framelayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/radiogroup"/>
+
+    </RelativeLayout>
+</layout>

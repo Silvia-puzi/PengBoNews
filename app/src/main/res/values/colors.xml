@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF3030</color>
+    <color name="colorPrimaryDark">#FF3030</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="grey">#8C8C8C</color>
+
+<!--more-->
+    <color name="detail_text_color">#222222</color>
+    <color name="service_color">#33000000</color>
+    <color name="service_color2">#ffffff</color>
+    <color name="addtobasket1">#FFA07A</color>
+    <color name="addtobasket2">#99ff0000</color>
+    <color name="buy1">#FF6347</color>
+    <color name="buy2">#f00</color>
+</resources>

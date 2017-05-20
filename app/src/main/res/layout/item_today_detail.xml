@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="90dp"
+        android:padding="15dp">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:id="@+id/item_today_img"
+            android:src="@drawable/splash01"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_today_title"
+            android:text="【解局】“报告总统，有人通俄！”“谁？”“你！"
+            android:layout_toRightOf="@+id/item_today_img"
+            android:lines="2"
+            android:layout_marginRight="5dp"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_today_source"
+            android:layout_alignParentBottom="true"
+            android:text="新华社"
+            android:layout_toRightOf="@+id/item_today_img"
+            android:textSize="11sp"
+            />
+
+        <TextView
+            android:textSize="11sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_today_time"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="2017-05-12 10:12:20"/>
+
+    </RelativeLayout>
+</layout>
