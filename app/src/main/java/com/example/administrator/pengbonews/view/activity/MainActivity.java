@@ -13,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.example.administrator.pengbonews.MyApplication;
 import com.example.administrator.pengbonews.R;
 import com.example.administrator.pengbonews.databinding.ActivityMainBinding;
 import com.example.administrator.pengbonews.gen.FavoriteDao;
+import com.example.administrator.pengbonews.utils.Util;
 import com.example.administrator.pengbonews.view.fragment.NewsFragment;
 import com.example.administrator.pengbonews.view.fragment.VideoFragment;
 import com.example.administrator.pengbonews.view.fragment.WechatFragment;
@@ -45,9 +47,34 @@ public class MainActivity extends AppCompatActivity
     //当前显示的fragment
     private static final String CURRENT_FRAGMENT = "STATE_FRAGMENT_SHOW";
     private FragmentManager mSupportFragmentManager;
+    private int theme = 0;
+
+    @Override
+    protected void onResume() {
+        Log.d("aaa","onResume");
+        super.onResume();
+        if(theme==Util.getAppTheme(this)){
+
+        }else{
+            reload();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("aaa","onDestroy");
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(savedInstanceState==null){
+            theme=Util.getAppTheme(this);
+        }else{
+            theme=savedInstanceState.getInt("theme");
+        }
+        setTheme(theme);
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
 
@@ -97,15 +124,14 @@ public class MainActivity extends AppCompatActivity
 
             //恢复fragment页面
             restoreFragment();
-
-
-        }else{      //正常启动时调用
+        }else{
+            //正常启动时调用
             fragments.add(new NewsFragment());
             fragments.add(new WechatFragment());
             fragments.add(new VideoFragment());
-
             showFragment();
         }
+
     }
 
     @Override
@@ -142,9 +168,10 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this,FavoritActivity.class);
             startActivity(intent);
         }
-//        }else if (id == R.id.nav_setting) {
-//
-//        }
+        else if (id == R.id.nav_setting) {
+            Util.switchAppTheme(this);
+            reload();
+        }
         binding.drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -154,16 +181,14 @@ public class MainActivity extends AppCompatActivity
             int id = view.getId();
             switch (id){
                 case R.id.main_mainpage:
-//                    changeFragment(new NewsFragment());
                     currentIndex = 0;
                     break;
                 case R.id.main_wechat:
-//                    changeFragment(new WechatFragment());
                     currentIndex = 1;
 
                     break;
                 case R.id.main_video:
-//                    changeFragment(new VideoFragment());
+
                     currentIndex = 2;
 
                     break;
@@ -176,10 +201,10 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-
         //“内存重启”时保存当前的fragment名字
         outState.putInt(CURRENT_FRAGMENT,currentIndex);
         super.onSaveInstanceState(outState);
+        outState.putInt("theme",theme);
     }
 
     /**
@@ -231,6 +256,16 @@ public class MainActivity extends AppCompatActivity
         //把当前显示的fragment记录下来
         currentFragment = fragments.get(currentIndex);
 
+    }
+
+    public void reload() {
+        Intent intent = getIntent();
+        overridePendingTransition(0, 0);//不设置进入退出动画
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        finish();
+
+        overridePendingTransition(0, 0);
+        startActivity(intent);
     }
 
 }

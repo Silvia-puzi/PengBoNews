@@ -33,6 +33,7 @@ import com.example.administrator.pengbonews.gen.FavoriteDao;
 import com.example.administrator.pengbonews.net.NewsDetailLoader;
 import com.example.administrator.pengbonews.net.NewsDetailService;
 import com.example.administrator.pengbonews.net.RetrofitServiceManager;
+import com.example.administrator.pengbonews.utils.SPUtils;
 import com.example.administrator.pengbonews.utils.ToastUtil;
 import com.example.administrator.pengbonews.view.fragment.MainFragment;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
@@ -262,15 +263,23 @@ public class NewsActivity extends AppCompatActivity implements View.OnClickListe
                 //跳搜索
                 break;
             case 1:
-                //判断表里是否有
-                Favorite fa = new Favorite(mId + "","news", mTitle, mFrom, mTime, mImgUrl,"0","0","0");
-                if (isFavor()){
-                    mFavoriteDao.deleteByKey(mId+"");
-                    ToastUtil.toast(this,"取消收藏");
+                //判断有无登录
+                boolean login = SPUtils.getBoolean(this, "login");
+                if (login){
+                    //判断表里是否有
+                    Favorite fa = new Favorite(mId + "","news", mTitle, mFrom, mTime, mImgUrl,"0","0","0");
+                    if (isFavor()){
+                        mFavoriteDao.deleteByKey(mId+"");
+                        ToastUtil.toast(this,"取消收藏");
+                    }else{
+                        mFavoriteDao.insert(fa);
+                        ToastUtil.toast(this,"收藏成功");
+                    }
                 }else{
-                    mFavoriteDao.insert(fa);
-                    ToastUtil.toast(this,"收藏成功");
+                    intent = new Intent(this,LoginActivity.class);
+                    startActivity(intent);
                 }
+
 
                 break;
             case 2:
